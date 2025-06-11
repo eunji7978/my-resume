@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김은지 - 이력서</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 스타일 및 리셋 */
+        :root {
+            --primary-color: #2c5282; /* Deep Blue */
+            --secondary-color: #e2e8f0; /* Light Gray */
+            --text-color: #2d3748; /* Dark Gray */
+            --light-text-color: #718096; /* Medium Gray */
+            --background-color: #f7fafc; /* Off-white */
+            --white-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* 컨테이너 및 레이아웃 */
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 35%;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            width: 65%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        /* 타이포그래피 */
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary-color);
+            margin-bottom: 24px;
+        }
+
+        .sidebar h2 {
+            color: var(--white-color);
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+
+        p {
+            margin: 0 0 1.2rem 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #4a5568;
+        }
+        
+        .sidebar a {
+            color: var(--white-color);
+        }
+
+        /* 컴포넌트 스타일 */
+        .profile-header {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .profile-header p {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item {
+            margin-bottom: 24px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .experience-item .position, .experience-item .period {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+            margin-bottom: 12px;
+        }
+
+        .experience-item ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .experience-item li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .experience-item li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        
+        /* 사이드바 스타일 */
+        .contact-info ul, .education ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .education li {
+             margin-bottom: 12px;
+        }
+        
+        .contact-info .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+        }
+        
+        .education-school {
+             font-weight: 500;
+        }
+        .education-major {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .education-period {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 기술 스택 SVG 차트 */
+        .skills ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .skills li {
+            margin-bottom: 15px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .skill-bar-bg {
+            fill: rgba(255, 255, 255, 0.2);
+        }
+        
+        .skill-bar-fg {
+            fill: var(--secondary-color);
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* --- 인쇄 전용 스타일 --- */
+        @media print {
+            /* 강제로 배경색 및 색상 인쇄 (가장 중요!) */
+            body, .sidebar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* 페이지 여백 및 불필요한 디자인 요소 제거 */
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                max-width: 100%;
+                width: 100%;
+                border: none;
+            }
+            
+            /* 링크 스타일 인쇄용으로 초기화 */
+            a, a:visited {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+            
+            /* 페이지 넘김 시 내용 잘림 방지 */
+            .experience-item, .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 사이드바: 연락처, 학력, 보유 기술 -->
+        <aside class="sidebar">
+            <div class="section contact-info">
+                <h2>Contact</h2>
+                <ul>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
+                        <a href="mailto:keji2004@naver.com">keji2004@naver.com</a>
+                    </li>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+                        <span>010-7452-7978</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section education">
+                <h2>Education</h2>
+                 <ul>
+                    <li>
+                        <div class="education-school">남서울대학교</div>
+                        <div class="education-major">스포츠경영학과 졸업</div>
+                        <div class="education-period">2017.03 - 2021.02</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>
+                        <div class="skill-header">
+                            <span class="skill-name">업무 프로세스 지원 및 관리</span>
+                        </div>
+                        <svg class="skill-bar" width="100%" height="12" data-value="90">
+                            <rect class="skill-bar-bg" x="0" y="0" width="100%" height="12" rx="6"></rect>
+                            <rect class="skill-bar-fg" x="0" y="0" width="90%" height="12" rx="6"></rect>
+                        </svg>
+                    </li>
+                    <li>
+                        <div class="skill-header">
+                            <span class="skill-name">SAP/ERP 시스템 활용</span>
+                        </div>
+                        <svg class="skill-bar" width="100%" height="12" data-value="88">
+                            <rect class="skill-bar-bg" x="0" y="0" width="100%" height="12" rx="6"></rect>
+                            <rect class="skill-bar-fg" x="0" y="0" width="88%" height="12" rx="6"></rect>
+                        </svg>
+                    </li>
+                    <li>
+                        <div class="skill-header">
+                            <span class="skill-name">비용 처리 및 정산</span>
+                        </div>
+                        <svg class="skill-bar" width="100%" height="12" data-value="88">
+                            <rect class="skill-bar-bg" x="0" y="0" width="100%" height="12" rx="6"></rect>
+                            <rect class="skill-bar-fg" x="0" y="0" width="88%" height="12" rx="6"></rect>
+                        </svg>
+                    </li>
+                    <li>
+                         <div class="skill-header">
+                             <span class="skill-name">부서 간 협업 및 커뮤니케이션</span>
+                         </div>
+                        <svg class="skill-bar" width="100%" height="12" data-value="92">
+                            <rect class="skill-bar-bg" x="0" y="0" width="100%" height="12" rx="6"></rect>
+                            <rect class="skill-bar-fg" x="0" y="0" width="92%" height="12" rx="6"></rect>
+                        </svg>
+                    </li>
+                     <li>
+                         <div class="skill-header">
+                             <span class="skill-name">OA 활용 능력 (MS Office)</span>
+                         </div>
+                        <svg class="skill-bar" width="100%" height="12" data-value="95">
+                            <rect class="skill-bar-bg" x="0" y="0" width="100%" height="12" rx="6"></rect>
+                            <rect class="skill-bar-fg" x="0" y="0" width="95%" height="12" rx="6"></rect>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 메인 콘텐츠: 소개, 경력 -->
+        <main class="main-content">
+            <header class="profile-header">
+                <h1>김은지</h1>
+                <p>성장을 지향하는 실무형 HR 인재</p>
+            </header>
+
+            <section class="section">
+                <h2>Professional Summary</h2>
+                <p>
+                    다양한 조직 환경에서 안정적인 운영 지원 역할을 성공적으로 수행한 경험을 보유하고 있습니다. 특히 HD한국조선해양에서는 직무발명보상금 제도의 안정적인 운영을 담당하고, 데이터 기반의 업무 처리를 통해 유관 부서와의 원활한 협업을 이끌었습니다. 꼼꼼함과 책임감을 바탕으로 조직의 목표 달성에 기여하는 실무 인재입니다.
+                </p>
+            </section>
+            
+            <section class="section">
+                <h2>Work Experience</h2>
+                <article class="experience-item">
+                    <h3>HD한국조선해양</h3>
+                    <div class="position">그룹IP센터 IP출원전략팀 / 사원</div>
+                    <div class="period">2023.08 - 현재</div>
+                    <ul>
+                        <li>직무발명보상금 제도 운영을 총괄하여 지급 대상자 검토부터 내부 보고까지 전 프로세스의 효율화에 기여</li>
+                        <li>핵심 정책 지표(특허 출원/보상 실적 등)를 체계적으로 수집 및 분석하여 데이터 기반의 의사결정 지원</li>
+                        <li>SAP 및 ERP 시스템을 활용하여 특허 수수료 청구, 비용 처리 등 재무 관련 업무의 정확성 및 신속성 확보</li>
+                        <li>경영분석, 회계, HR 등 유관부서와 긴밀한 협업을 통해 원활한 제도 운영 및 효과적인 커뮤니케이션 주도</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <h3>(주)아이아이컴바인드 누데이크</h3>
+                    <div class="position">스토어브랜딩팀 / 사원</div>
+                    <div class="period">2021.08 - 2023.07</div>
+                    <ul>
+                        <li>신규 입사자 대상 1:1 멘토링을 담당하여 원활한 온보딩 및 조직 적응에 기여</li>
+                        <li>주요 판매 및 재고 데이터에 기반한 품목별 발주 프로세스를 관리하며 운영 효율화에 기여</li>
+                        <li>고객과의 적극적인 커뮤니케이션을 통해 니즈를 파악하고 맞춤형 응대로 고객 만족도 향상에 기여</li>
+                        <li>핵심 지표(판매 실적, 리턴율) 상시 모니터링 및 분석을 통해 매장 운영 효율성 증대를 위한 개선안 제안</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
